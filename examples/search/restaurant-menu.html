@@ -1,0 +1,22 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="restaurant-menu">
+  <template>
+    <input type="search" on-input="updateFilter"></input>
+    <content></content>
+  </template>
+</dom-module>
+
+<script>
+  Polymer({
+    is: 'restaurant-menu',
+  
+    updateFilter: function(e) {
+      Polymer.dom(this).querySelectorAll('restaurant-menu-item')
+        .forEach(function(menuitem) {
+          var matches = menuitem.matches(e.target.value);
+          menuitem.setAttribute('aria-hidden', !matches);
+        });
+    }
+  });
+</script>

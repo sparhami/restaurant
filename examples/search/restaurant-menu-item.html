@@ -1,0 +1,30 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="restaurant-menu-item">
+  <style>
+    :host[aria-hidden="true"] {
+      display: none;
+    }
+  </style>
+  <template>
+    <span>[[name]]</span>
+    <span>[[price]]</span>
+  </template>
+</dom-module>
+
+<script>
+  Polymer({
+    is: 'restaurant-menu-item',
+
+    properties: {
+      name: String,
+      price: Number
+    },
+
+    matches: function(keyword) {
+      var searchValue = keyword.toLowerCase();
+      var text = this.textContent.toLowerCase();
+      return text.indexOf(searchValue) >= 0;
+    }
+  });
+</script>
